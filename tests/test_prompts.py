@@ -68,11 +68,13 @@ class TestPrompts:
         for i, example in enumerate(examples):
             assert str(example.get("input", "")).strip(), f"Exemplo {i} sem 'input'"
             assert str(example.get("output", "")).strip(), f"Exemplo {i} sem 'output'"
-            assert "Como um" in example["output"], f"Exemplo {i}: saída fora do formato User Story"
+            assert re.match(r"Como (um|uma|o|a) ", example["output"].strip()), \
+                f"Exemplo {i}: saída fora do formato User Story ('Como um/o ...')"
 
     def test_prompt_no_todos(self, prompt):
         """Garante que você não esqueceu nenhum `[TODO]` no texto."""
-        assert "TODO" not in all_prompt_text(prompt).upper()
+        # \b evita falso positivo com a palavra "todos"; a marcação procurada é TODO / [TODO]
+        assert not re.search(r"\bTODO\b", all_prompt_text(prompt), re.IGNORECASE)
 
     def test_minimum_techniques(self, prompt):
         """Verifica (através dos metadados do yaml) se pelo menos 2 técnicas foram listadas."""
