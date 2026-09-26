@@ -73,12 +73,12 @@ Implicações:
 - [x] R25. 3–5 iterações registradas no log abaixo
 
 ### Entrega (README)
-- [ ] R26. Seção "Técnicas Aplicadas (Fase 2)": quais, por quê, exemplos — estruturada pela lógica do Pedro:
+- [x] R26. Seção "Técnicas Aplicadas (Fase 2)": quais, por quê, exemplos — estruturada pela lógica do Pedro:
   **quem fala** (Role Prompting) · **como pensa** (CoT) · **como entrega** (Skeleton of Thought) · **com que modelo** (Few-shot);
   incluir por que ReAct foi descartado (sem ferramentas/ações reais → blocos Pensamento/Ação/Observação fictícios prejudicariam Clarity e Precision)
-- [ ] R27. Seção "Resultados Finais": link público (`share_dataset`), screenshots, comparação v1 × v2
-- [ ] R28. Seção "Como Executar": pré-requisitos, comandos por fase
-- [ ] R29. Evidências no LangSmith: dataset com 15 exemplos, execuções v2 ≥ 0.8, tracing de ≥ 3 exemplos
+- [x] R27. Seção "Resultados Finais": link público (`share_dataset`), comparação v1 × v2, screenshots
+- [x] R28. Seção "Como Executar": pré-requisitos, comandos por fase
+- [x] R29. Evidências: link público do dataset (cobre dataset, execuções ≥ 0.8 e tracing) + prints em docs/screenshots (01 terminal em 2 partes, 02 experimentos)
 
 Não alterar: `src/evaluate.py`, `src/metrics.py`, `src/utils.py`, `datasets/`.
 
@@ -115,3 +115,4 @@ mudar **uma coisa por vez** → registrar no log.
 | 3 | 2026-09-26 | Regras gerais: persona "o sistema" para regras internas; seção de acessibilidade obrigatória em bug de UI médio; validação no ponto da falha; contexto de segurança com severidade, erro 403 e log | 0.89 | 0.86 | 0.92 | 0.89 | 0.90 | Aprovado (média 0.89). Segurança melhorou (F1 0.82→0.92), mas persona, carrinho e modal quase não mudaram: o few-shot médio usava "Como um paciente" num caso de concorrência, contradizendo a regra, e não havia exemplo de UI. Com gpt-4.1-mini, exemplos pesam mais que instruções |
 | 4 | 2026-09-26 | Few-shot alinhado às regras: exemplo médio com persona "o sistema" + validação na confirmação + prevenção informativa; novo exemplo de UI (Android) com Critérios de Acessibilidade | 0.89 | 0.86 | 0.94 | 0.90 | 0.91 | Aprovado (média 0.90). Carrinho C 0.85→0.95 / F1 0.79→0.90; modal C 0.85→0.95. Persona de usuário em bug de backend persiste (limitação aceita). Testes corrigidos: aceitar "Como o sistema" e não confundir "todos" com TODO |
 | 5 | 2026-09-26 | Nenhuma (reexecução para medir estabilidade) | 0.91 | 0.87 | 0.95 | 0.91 | 0.93 | Aprovado (média 0.91). Mesmo prompt da rodada 4 → variação do juiz de ~±0.02, todas as métricas seguem ≥ 0.87 |
+| 6 | 2026-09-26 | Nenhuma (execução final, usada nos screenshots) | 0.91 | 0.87 | 0.94 | 0.91 | 0.93 | Aprovado (média 0.912). Confirma estabilidade: rodadas 4–6 com o mesmo prompt, todas ≥ 0.86 |
